@@ -21,7 +21,7 @@ The goal of this project is not only to reproduce Word2Vec, but also to understa
 * [x] Read the Word2Vec paper
 * [x] Created paper summary
 * [x] Generated Skip-Gram training pairs manually
-* [ ] Implement Skip-Gram training pair generation in Python
+* [x] Implement Skip-Gram training pair generation in Python
 * [ ] Build vocabulary
 * [ ] Create word embeddings
 * [ ] Understand Negative Sampling
