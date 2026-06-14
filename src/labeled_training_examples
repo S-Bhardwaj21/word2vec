@@ -1,0 +1,68 @@
+import random
+
+# Sample sentence
+sentence = "deep learning loves data"
+
+# Convert sentence into words
+words = sentence.split()
+
+# Generate Skip-Gram pairs (window size = 1)
+pairs = []
+
+for i in range(len(words)):
+    if i > 0:
+        pairs.append((words[i], words[i - 1]))
+
+    if i < len(words) - 1:
+        pairs.append((words[i], words[i + 1]))
+
+print("Positive Pairs:")
+for pair in pairs:
+    print(pair)
+
+# Select one positive pair randomly
+target, context = random.choice(pairs)
+
+print("\nSelected Positive Pair:")
+print((target, context), "-> 1")
+
+# Vocabulary
+vocabulary = [
+    "deep",
+    "learning",
+    "loves",
+    "data",
+    "hospital",
+    "banana",
+    "guitar",
+    "airplane",
+    "pizza",
+    "river"
+]
+
+# Generate 5 negative samples
+negatives = []
+
+while len(negatives) < 5:
+    word = random.choice(vocabulary)
+
+    if (
+        word != target
+        and word != context
+        and word not in negatives
+    ):
+        negatives.append(word)
+
+# Create labeled training examples
+training_examples = []
+
+# Positive example
+training_examples.append(((target, context), 1))
+
+# Negative examples
+for word in negatives:
+    training_examples.append(((target, word), 0))
+
+print("\nTraining Examples:")
+for pair, label in training_examples:
+    print(f"{pair} -> {label}")
